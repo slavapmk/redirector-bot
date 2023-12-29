@@ -24,15 +24,21 @@ for row in manager.settings[manager.ECHO_BUTTONS]:
 
 @dp.message_handler()
 async def on_message(message: types.Message):
-    await message.reply(
-        text=(
-            manager.settings[manager.ECHO_TEXT]
-            .replace('${user}', message.from_user.full_name)
-        ),
-        parse_mode=types.ParseMode.MARKDOWN,
-        disable_web_page_preview=True,
-        reply_markup=markup
-    )
+    if (((
+                 message.text.startswith('Игнат, ') or
+                 message.text.startswith('Ignat, ')
+         ) and
+         message.chat.type != 'private'
+    ) or message.chat.type == 'private'):
+        await message.reply(
+            text=(
+                manager.settings[manager.ECHO_TEXT]
+                .replace('${user}', message.from_user.full_name)
+            ),
+            parse_mode=types.ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
+            reply_markup=markup
+        )
 
 
 def entrypoint():
