@@ -29,7 +29,7 @@ try:
         if read != '':
             settings = json.loads(read)
 except IOError:
-    with open(SETTINGS_FILE, 'w') as file:
+    with open(SETTINGS_FILE, 'w', encoding="utf-8") as file:
         json.dump(settings, file, sort_keys=True, indent=2)
     print("Insert tokens", flush=True)
     exit()
