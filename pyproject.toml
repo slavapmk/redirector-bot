@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "redirector"
+description = ""
+version = "0.0.1"
+authors = ["Slava Petrov <slavapmk@gmail.com>"]
+packages = [{ include = "redirector", from = "src" }]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+aiogram = "2.25.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+redirector = "redirector.main:entrypoint"
